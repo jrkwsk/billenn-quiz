@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container-fluid">
     <router-view></router-view>
   </div>
 </template>
@@ -16,31 +16,19 @@ export default {
 </script>
 
 <style lang="scss">
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+$font-stack: Helvetica, sans-serif;
+$primary-color: #333;
+$color-of-background: #fff;
+$corporate-orange: #f15a23;
 
-h1,
-h2 {
-  font-weight: normal;
+.btn-bille {
+  background-color: $corporate-orange;
+  color: white;
+  min-width: 8vw;
+  text-transform: uppercase;
 }
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
 a {
-  color: #42b983;
+  color: black;
+  text-decoration: underline;
 }
 </style>
