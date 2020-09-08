@@ -16,14 +16,17 @@
                 type="range"
                 min="1"
                 max="3"
-                value="0"
+                value="1"
                 :id="tech.id"
                 :disabled="tech.disabled = !tech.checked"
+                v-model="tech.levelChosen"
               />
               <p :class="{ 'min-opacity': !tech.checked }">junior regular senior</p>
             </div>
             <p>czy zaznaczone {{tech.checked}}</p>
-            <p>czy nieaktywne {{tech.disabled}}</p>
+            <!-- <p>czy nieaktywne {{tech.disabled}}</p> -->
+            <p>levelChosen{{ tech.levelChosen }}</p>
+            <!-- <p>wybrane technologie: {{techsChosenArr}}</p> -->
           </li>
         </ul>
       </form>
@@ -45,7 +48,7 @@ export default {
           shortcut: "sa",
           text: "Software Archtecture",
           name: "softwarearchtecture",
-          levelChosen: 0,
+          levelChosen: 1,
           checked: false,
           disabled: true
         },
@@ -54,12 +57,12 @@ export default {
           shortcut: "js",
           text: "Javascript",
           name: "javascript",
-          levelChosen: 0,
+          levelChosen: 1,
           checked: false,
           disabled: true
         }
       ],
-      technologiesChosen: [
+      techsChosenArr: [
         {
           name: "sa",
           level: "0"
