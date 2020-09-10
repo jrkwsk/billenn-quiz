@@ -7,6 +7,7 @@ import {
   routes
 } from './routes'
 
+
 Vue.use(VueRouter);
 // in prod mode change backend settings => rules in firebase
 Vue.use(VueResource);

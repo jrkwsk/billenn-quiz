@@ -1,5 +1,7 @@
 import Home from './components/Main/Home.vue';
-import Evaluation from './components/Main/Evaluation.vue';
+import Evaluation from './components/Evaluation/Evaluation.vue';
+import Technology from './components/Evaluation/Technology.vue';
+
 import Quiz from './components/Quiz/Quiz.vue';
 import Results from './components/Main/Results.vue';
 import Thanks from './components/Main/Thanks.vue';
@@ -30,5 +32,8 @@ export const routes = [{
   {
     path: '/invalid',
     component: Invalid
+  }, {
+    path: '/technology',
+    component: Technology
   }
 ];
