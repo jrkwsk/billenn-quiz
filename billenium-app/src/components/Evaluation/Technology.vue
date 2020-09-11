@@ -17,7 +17,7 @@
       <br />
       <p>Junior Regular Senior</p>
     </div>
-    <h1>tutaj wynik: {{ checkedAndLeveled() }}</h1>
+    <h2>tutaj wynik: {{ checkedAndLeveled() }}</h2>
   </div>
 </template>
 
@@ -36,8 +36,28 @@ export default {
       if (this.checkedTech == true) {
         this.techName = this.technologyNames;
         return this.techName + ": " + this.levelChosen;
+      } else if (this.checkedTech == false) {
+        this.techName = this.technologyNames;
+        return this.techName + ": " + 0;
       }
     }
+    // addToDatabase() {
+    //   this.$http
+    //     .put("https://vue-billen-codes.firebaseio.com/codes.json", {
+    //       headers: {
+    //         "Access-Control-Allow-Origin": "*"
+    //       }
+    //     })
+    //     .then(response => {
+    //       console.log(response.json());
+    //       return response.json();
+    //     })
+    //     .then(codes =>
+    //       !codes.includes(this.emailCode)
+    //         ? (this.agreeEntry = "/invalid")
+    //         : (this.agreeEntry = "/evaluation")
+    //     );
+    // }
   }
 };
 </script>

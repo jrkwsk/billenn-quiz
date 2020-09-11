@@ -1,19 +1,34 @@
 <template>
   <div class="container">
-    <div class="explainer">
-      <h1>explainr</h1>
-    </div>
-    <div class="test">
-      <app-technology
-        v-for="(technology, index) in technologyNames"
-        :technologyNames="technologyNames[index]"
-        :key="technology"
-      ></app-technology>
-    </div>
+    <div class="row">
+      <div class="col-6">
+        <img src="..\..\assets\logo.png" alt />
+        <h2 class>Skill self-evaluation</h2>
+        <p
+          class
+        >Here you can choose which categories of questions you want to see on your test. You will see only questions up to the level you have chosen, never higher.</p>
+        <p
+          class
+        >The highe level you chose, the more questions you will have to answer, but also the more time you will get to finish your test.</p>
+        <h2 class>Remember</h2>
+        <p class>Once you click SUBMIT button, you will not be anle to change your answer.</p>
+      </div>
+      <div class="col-6">
+        <div class="test">
+          <app-technology
+            v-for="(technology, index) in technologyNames"
+            :technologyNames="technologyNames[index]"
+            :key="technology"
+            v-model="checkboxData"
+          ></app-technology>
+          <h2>checkboxData: {{checkboxData}}</h2>
 
-    <router-link to="/quiz">
-      <button class="btn btn-primary">go to questiosn</button>
-    </router-link>
+          <router-link to="/quiz">
+            <button class="btn btn-primary">go to questiosn</button>
+          </router-link>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -23,10 +38,22 @@ import Technology from "./Technology.vue";
 export default {
   data() {
     return {
-      technAnswer: "techanswer",
-      technologyNames: ["Javascrit", "SQL", "git", "dupa", "css"]
+      technologyNames: [
+        "Software Architecture",
+        "Javascript",
+        ".NET",
+        "Angular",
+        "Java",
+        "React",
+        "SQL",
+        "CSS",
+        "GIT"
+      ],
+      checkboxData: []
     };
   },
+
+  props: [""],
 
   components: {
     "app-technology": Technology
@@ -40,5 +67,8 @@ export default {
 }
 .min-opacity {
   opacity: 0.7;
+}
+img {
+  width: 20vw;
 }
 </style> 

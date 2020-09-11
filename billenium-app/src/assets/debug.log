@@ -1,2 +1,5 @@
 [0905/223143.691:WARNING:ipc_message_attachment_set.cc(49)] MessageAttachmentSet destroyed with unconsumed attachments: 0/1
 [0905/223144.074:ERROR:browser_gpu_channel_host_factory.cc(139)] Failed to launch GPU process.
+[0911/150451.482:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
+[0911/162437.565:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
+[0911/162438.898:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
