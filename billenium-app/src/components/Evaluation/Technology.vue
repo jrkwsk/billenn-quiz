@@ -2,8 +2,8 @@
   <div class="container">
     <!-- //byyć może checked on click okaze sie niepotrzebne tbc -->
     <!-- :checked="checked" @click="checked=!checked" -->
-    <input type="checkbox" v-model="checkedTech" :value="technologyNames" :id="technologyNames" />
-    <label :for="technologyNames">{{ technologyNames }}</label>
+    <input type="checkbox" v-model="checkedTech" :value="technology.name" :id="technology.id" />
+    <label :for="technology.id">{{ technology.name }}</label>
     <br />
     <div class="seniority-wrapper" :class="{ 'min-opacity': !checkedTech}">
       <input
@@ -11,13 +11,14 @@
         min="1"
         max="3"
         v-model="levelChosen"
-        @input="checkedAndLeveled"
+        @input="summary()"
         :disabled="!checkedTech"
       />
+      <!-- maybe nt input event: to check -->
       <br />
       <p>Junior Regular Senior</p>
+      <br />
     </div>
-    <h2>tutaj wynik: {{ checkedAndLeveled() }}</h2>
   </div>
 </template>
 
@@ -30,34 +31,29 @@ export default {
       levelChosen: "1"
     };
   },
-  props: ["technologyNames"],
+  props: ["technology", "emailCode"],
   methods: {
-    checkedAndLeveled() {
-      if (this.checkedTech == true) {
-        this.techName = this.technologyNames;
-        return this.techName + ": " + this.levelChosen;
-      } else if (this.checkedTech == false) {
-        this.techName = this.technologyNames;
-        return this.techName + ": " + 0;
+    summary() {
+      if (this.checkedTech) {
+        const summary = {
+          //todo save user email code in local storage?
+          user: this.emailCode,
+          techId: this.technology.id,
+          techName: this.technology.name,
+          techLevel: this.levelChosen
+        };
+        console.log(summary);
+      } else {
+        const summary = {
+          //todo save user email code in local storage?
+          user: this.emailCode,
+          techId: this.technology.id,
+          techName: this.technology.name,
+          techLevel: "0"
+        };
+        console.log(summary);
       }
     }
-    // addToDatabase() {
-    //   this.$http
-    //     .put("https://vue-billen-codes.firebaseio.com/codes.json", {
-    //       headers: {
-    //         "Access-Control-Allow-Origin": "*"
-    //       }
-    //     })
-    //     .then(response => {
-    //       console.log(response.json());
-    //       return response.json();
-    //     })
-    //     .then(codes =>
-    //       !codes.includes(this.emailCode)
-    //         ? (this.agreeEntry = "/invalid")
-    //         : (this.agreeEntry = "/evaluation")
-    //     );
-    // }
   }
 };
 </script>

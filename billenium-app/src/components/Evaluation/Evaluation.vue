@@ -15,13 +15,7 @@
       </div>
       <div class="col-6">
         <div class="test">
-          <app-technology
-            v-for="(technology, index) in technologyNames"
-            :technologyNames="technologyNames[index]"
-            :key="technology"
-            v-model="checkboxData"
-          ></app-technology>
-          <h2>checkboxData: {{checkboxData}}</h2>
+          <app-technology v-for="technology in technologies" :technology="technology">{{technology}}</app-technology>
 
           <router-link to="/quiz">
             <button class="btn btn-primary">go to questiosn</button>
@@ -38,18 +32,18 @@ import Technology from "./Technology.vue";
 export default {
   data() {
     return {
-      technologyNames: [
-        "Software Architecture",
-        "Javascript",
-        ".NET",
-        "Angular",
-        "Java",
-        "React",
-        "SQL",
-        "CSS",
-        "GIT"
-      ],
-      checkboxData: []
+      technologies: [
+        { id: 1, name: "Software Architecture", shortcut: "SA", level: 0 },
+        { id: 2, name: "Javascript", shortcut: "JS", level: 0 },
+        { id: 3, name: ".NET", shortcut: "NET", level: 0 }
+
+        // "Angular",
+        // "Java",
+        // "React",
+        // "SQL",
+        // "CSS",
+        // "GIT"
+      ]
     };
   },
 
