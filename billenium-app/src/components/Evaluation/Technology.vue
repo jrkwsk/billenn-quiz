@@ -2,8 +2,8 @@
   <div class="container">
     <!-- //byyć może checked on click okaze sie niepotrzebne tbc -->
     <!-- :checked="checked" @click="checked=!checked" -->
-    <input type="checkbox" v-model="checkedTech" :value="technology.name" :id="technology.id" />
-    <label :for="technology.id">{{ technology.name }}</label>
+    <input type="checkbox" v-model="checkedTech" :value="user.name" :id="user.id" />
+    <label :for="user.id">{{ user.name }}</label>
     <br />
     <div class="seniority-wrapper" :class="{ 'min-opacity': !checkedTech}">
       <input
@@ -31,28 +31,31 @@ export default {
       levelChosen: "1"
     };
   },
-  props: ["technology", "emailCode"],
+  props: ["users", "emailCode"],
   methods: {
     summary() {
       if (this.checkedTech) {
         const summary = {
           //todo save user email code in local storage?
-          user: this.emailCode,
-          techId: this.technology.id,
-          techName: this.technology.name,
+          useraaa: this.emailCode,
+          techName: this.user.name,
           techLevel: this.levelChosen
         };
         console.log(summary);
       } else {
         const summary = {
           //todo save user email code in local storage?
-          user: this.emailCode,
-          techId: this.technology.id,
-          techName: this.technology.name,
+          useraaa: aaa,
+          techName: this.user.name,
           techLevel: "0"
         };
         console.log(summary);
       }
+    }
+  },
+  computed: {
+    users() {
+      return this.$store.getters.users;
     }
   }
 };
