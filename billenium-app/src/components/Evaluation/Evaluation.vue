@@ -50,6 +50,7 @@ export default {
         "SQL",
         "CSS",
         "GIT"
+        //eval6
       ],
       // checkboxData: "",
       mateusz: {},
