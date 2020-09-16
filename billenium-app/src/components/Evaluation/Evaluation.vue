@@ -19,9 +19,11 @@
             v-for="(technology, index) in technologyNames"
             :technologyNames="technologyNames[index]"
             :key="technology"
-            v-model="checkboxData"
+            @input="addToCheckboxData($event)"
           ></app-technology>
-          <h2>checkboxData: {{checkboxData}}</h2>
+          <h2>tutaj result : {{ result }}</h2>
+          <!-- <h2>tutaj CheckboxData: {{ CheckboxData }}</h2> -->
+          <h2>mateusz mowi {{mateusz}}</h2>
 
           <router-link to="/quiz">
             <button class="btn btn-primary">go to questiosn</button>
@@ -49,12 +51,24 @@ export default {
         "CSS",
         "GIT"
       ],
-      checkboxData: []
+      // checkboxData: "",
+      mateusz: {},
+      rawData: []
     };
   },
 
-  props: [""],
+  props: ["result"],
+  methods: {
+    addToCheckboxData($event) {
+      // console.log("dupaaaa");
+      // add to raw data
+      this.rawData.push($event);
+      console.log($event);
+      console.log("tutaj sa technolgie:" + this.rawData);
 
+      this.mateusz = this.rawData;
+    }
+  },
   components: {
     "app-technology": Technology
   }

@@ -17,7 +17,7 @@
       <br />
       <p>Junior Regular Senior</p>
     </div>
-    <h2>tutaj wynik: {{ checkedAndLeveled() }}</h2>
+    <h2>tutaj result: {{ result }}</h2>
   </div>
 </template>
 
@@ -27,7 +27,8 @@ export default {
     return {
       checkedTech: "",
       techName: "",
-      levelChosen: "1"
+      levelChosen: "1",
+      result: [""]
     };
   },
   props: ["technologyNames"],
@@ -35,11 +36,19 @@ export default {
     checkedAndLeveled() {
       if (this.checkedTech == true) {
         this.techName = this.technologyNames;
-        return this.techName + ": " + this.levelChosen;
+        this.result = this.techName + ": " + this.levelChosen;
+        // return this.result;
+        // console.log(this.result);
       } else if (this.checkedTech == false) {
         this.techName = this.technologyNames;
-        return this.techName + ": " + 0;
+        this.result = this.techName + ": " + 0;
+        // console.log(this.result);
+
+        // return this.result;
       }
+
+      // console.log("dza");
+      this.$emit("input", this.result);
     }
     // addToDatabase() {
     //   this.$http
