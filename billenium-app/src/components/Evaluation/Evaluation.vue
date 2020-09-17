@@ -23,7 +23,7 @@
           ></app-technology>
           <h2>tutaj result : {{ result }}</h2>
           <!-- <h2>tutaj CheckboxData: {{ CheckboxData }}</h2> -->
-          <h2>mateusz mowi {{mateusz}}</h2>
+          <h2>mateusz mowi {{result}}</h2>
 
           <router-link to="/quiz">
             <button class="btn btn-primary">go to questiosn</button>
@@ -43,30 +43,27 @@ export default {
       technologyNames: [
         "Software Architecture",
         "Javascript",
-        ".NET",
-        "Angular",
-        "Java",
-        "React",
-        "SQL",
-        "CSS",
-        "GIT"
+        ".NET"
+        // "Angular",
+        // "Java",
+        // "React",
+        // "SQL",
+        // "CSS",
+        // "GIT"
       ],
       // checkboxData: "",
       mateusz: {},
-      rawData: []
+      rawData: [".NET: 1", "Javascript: 1", "Software Architecture: 1"]
     };
   },
 
   props: ["result"],
   methods: {
     addToCheckboxData($event) {
-      // console.log("dupaaaa");
-      // add to raw data
-      this.rawData.push($event);
-      console.log($event);
-      console.log("tutaj sa technolgie:" + this.rawData);
-
-      this.mateusz = this.rawData;
+      // console.log($event.toString());
+      // console.log("sam event: " + $event);
+      // console.log("wszystkie eventy w tablicy:" + this.rawData);
+      // this.mateusz = this.rawData;
     }
   },
   components: {

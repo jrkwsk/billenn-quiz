@@ -2,7 +2,13 @@
   <div class="container">
     <!-- //byyć może checked on click okaze sie niepotrzebne tbc -->
     <!-- :checked="checked" @click="checked=!checked" -->
-    <input type="checkbox" v-model="checkedTech" :value="technologyNames" :id="technologyNames" />
+    <input
+      type="checkbox"
+      v-model="checkedTech"
+      :value="technologyNames"
+      :id="technologyNames"
+      @change="checkedAndLeveled"
+    />
     <label :for="technologyNames">{{ technologyNames }}</label>
     <br />
     <div class="seniority-wrapper" :class="{ 'min-opacity': !checkedTech}">
@@ -28,7 +34,7 @@ export default {
       checkedTech: "",
       techName: "",
       levelChosen: "1",
-      result: [""]
+      result: []
     };
   },
   props: ["technologyNames"],
@@ -48,25 +54,37 @@ export default {
       }
 
       // console.log("dza");
-      this.$emit("input", this.result);
+      //     this.$http
+      // .get("https://vue-billen-codes.firebaseio.com/codes.json", {
+      //   headers: {
+      //     "Access-Control-Allow-Origin": "*"
+      //   }
+      // })
+      let evaluation = JSON.stringify(this.result);
+      this.$http
+        .put(
+          "https://vue-billen-codes.firebaseio.com/evaluation.json",
+          evaluation,
+          {
+            headers: {
+              "Access-Control-Allow-Origin": "*"
+            }
+          }
+        )
+        .then(
+          response => {
+            console.log(response);
+            // return response.json();
+          },
+          error => {
+            console.log(error);
+          }
+        );
     }
-    // addToDatabase() {
-    //   this.$http
-    //     .put("https://vue-billen-codes.firebaseio.com/codes.json", {
-    //       headers: {
-    //         "Access-Control-Allow-Origin": "*"
-    //       }
-    //     })
-    //     .then(response => {
-    //       console.log(response.json());
-    //       return response.json();
-    //     })
-    //     .then(codes =>
-    //       !codes.includes(this.emailCode)
-    //         ? (this.agreeEntry = "/invalid")
-    //         : (this.agreeEntry = "/evaluation")
-    //     );
-    // }
+  },
+  created() {
+    this.techName = this.technologyNames;
+    this.result = this.techName + ": " + 0;
   }
 };
 </script>
