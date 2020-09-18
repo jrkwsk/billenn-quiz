@@ -19,11 +19,12 @@
             <input type="checkbox" @input="toggle($event)" />
             name: {{name}}
             <p>index: {{index}}</p>
-            <p>value: {{value}}</p>
-            <input type="range" min="1" max="3" v-model="value" />
+            <p>value.level: {{value.level}}</p>
+            <input type="range" min="1" max="3" v-model="value.level" />
             <p>J R S</p>
           </form>
           <p>{{technology}}</p>
+
           <router-link to="/quiz">
             <button class="btn btn-primary">go to questiosn</button>
           </router-link>
@@ -37,7 +38,11 @@
 export default {
   data() {
     return {
-      technology: { sa: 0, js: 0, sql: 0 }
+      technology: {
+        software: { name: "sa", level: 0 },
+        javascript: { name: "js", level: 0 },
+        sql: { name: "sql", level: 0 }
+      }
     };
   },
   methods: {
