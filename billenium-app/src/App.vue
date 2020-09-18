@@ -11,9 +11,6 @@ export default {
     return {
       msg: "Welcome to Your Vue.js App"
     };
-  },
-  created() {
-    this.$store.dispatch("initUsers");
   }
 };
 </script>

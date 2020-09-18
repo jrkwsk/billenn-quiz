@@ -15,8 +15,15 @@
       </div>
       <div class="col-6">
         <div class="test">
-          <app-technology v-for="user in users" :user="user" :key="user.id">{{user.name}}</app-technology>
-
+          <form action v-for="(value, name, index) in technology" :key="name">
+            <input type="checkbox" @input="toggle($event)" />
+            name: {{name}}
+            <p>index: {{index}}</p>
+            <p>value: {{value}}</p>
+            <input type="range" min="1" max="3" v-model="value" />
+            <p>J R S</p>
+          </form>
+          <p>{{technology}}</p>
           <router-link to="/quiz">
             <button class="btn btn-primary">go to questiosn</button>
           </router-link>
@@ -27,16 +34,19 @@
 </template>
 
 <script>
-import Technology from "./Technology.vue";
-
 export default {
-  props: [""],
-  components: {
-    "app-technology": Technology
+  data() {
+    return {
+      technology: { sa: 0, js: 0, sql: 0 }
+    };
   },
-  computed: {
-    users() {
-      return this.$store.getters.users;
+  methods: {
+    toggle($event) {
+      if ($event.target.checked) {
+        $event.target.nextElementSibling.disabled = false;
+      } else {
+        $event.target.nextElementSibling.disabled = true;
+      }
     }
   }
 };
