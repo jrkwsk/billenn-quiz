@@ -18,12 +18,17 @@
           <form action v-for="(value, name, index) in technology" :key="name">
             <input type="checkbox" @input="toggle($event)" />
             name: {{name}}
-            <p>index: {{index}}</p>
-            <p>value.level: {{value.level}}</p>
-            <input type="range" min="1" max="3" v-model="value.level" />
+            <input
+              type="range"
+              min="1"
+              max="3"
+              v-model="value.level"
+              disabled
+            />
             <p>J R S</p>
           </form>
           <p>{{technology}}</p>
+          <p>{{index}}</p>
 
           <router-link to="/quiz">
             <button class="btn btn-primary">go to questiosn</button>
@@ -49,6 +54,8 @@ export default {
     toggle($event) {
       if ($event.target.checked) {
         $event.target.nextElementSibling.disabled = false;
+        $event.target.nextElementSibling.value = 1;
+        console.log($event.target.nextElementSibling.value);
       } else {
         $event.target.nextElementSibling.disabled = true;
       }
