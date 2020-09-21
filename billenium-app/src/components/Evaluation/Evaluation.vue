@@ -16,7 +16,7 @@
       <div class="col-6">
         <div class="test">
           <form action v-for="(value, name, index) in technology" :key="name">
-            <input type="checkbox" @input="toggle($event)" />
+            <input type="checkbox" @input="toggleDisabled($event)" v-model="value.ischecked" />
             name: {{name}}
             <input
               type="range"
@@ -28,8 +28,8 @@
             <p>J R S</p>
           </form>
           <p>{{technology}}</p>
-          <p>{{index}}</p>
-
+          <button @click="submitLevels">sprawdz level</button>
+          <h1>{{technology}}</h1>
           <router-link to="/quiz">
             <button class="btn btn-primary">go to questiosn</button>
           </router-link>
@@ -44,24 +44,41 @@ export default {
   data() {
     return {
       technology: {
-        software: { name: "sa", level: 0 },
-        javascript: { name: "js", level: 0 },
-        sql: { name: "sql", level: 0 }
+        software: { name: "sa", level: 1, ischecked: false },
+        javascript: { name: "js", level: 1, ischecked: false },
+        sql: { name: "sql", level: 1, ischecked: false }
       }
     };
   },
   methods: {
-    toggle($event) {
+    toggleDisabled($event) {
       if ($event.target.checked) {
         $event.target.nextElementSibling.disabled = false;
-        $event.target.nextElementSibling.value = 1;
-        console.log($event.target.nextElementSibling.value);
       } else {
         $event.target.nextElementSibling.disabled = true;
       }
+    },
+    submitLevels() {
+      //function changes value of level to 0 if technology is not checked. This work just before submiting the summary of form.
+      const tech = this.technology;
+      for (const [key, value] of Object.entries(tech)) {
+        if (value.ischecked === false) {
+          value.level = 0;
+        }
+      }
+      //post to database
     }
   }
 };
+
+// const object1 = {
+//   a: 'somestring',
+//   b: 42
+// };
+
+// for (const [key, value] of Object.entries(object1)) {
+//   console.log(`${key}: ${value}`);
+// }
 </script>
 
 <style lang="scss">
