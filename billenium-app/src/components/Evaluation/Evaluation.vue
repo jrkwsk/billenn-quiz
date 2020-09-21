@@ -67,6 +67,36 @@ export default {
         }
       }
       //post to database
+      this.$http
+        .post(
+          "https://vue-billen-codes.firebaseio.com/users.json",
+          this.technology,
+          {
+            headers: {
+              "Access-Control-Allow-Origin": "*"
+            }
+          }
+        )
+        .then(
+          response => {
+            console.log(response);
+          },
+          error => {
+            console.log(error);
+          }
+        );
+
+      //get list of questions
+      this.$http
+        .get("https://vue-billen-codes.firebaseio.com/users.json", {
+          headers: {
+            "Access-Control-Allow-Origin": "*"
+          }
+        })
+        .then(response => {
+          return response.json();
+        })
+        .then(users => console.log(users));
     }
   }
 };
