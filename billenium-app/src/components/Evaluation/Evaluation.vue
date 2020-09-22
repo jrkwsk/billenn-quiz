@@ -17,7 +17,7 @@
         <div class="test">
           <form action v-for="(value, name, index) in technology" :key="name">
             <input type="checkbox" @input="toggleDisabled($event)" v-model="value.ischecked" />
-            name: {{name}}
+            {{value.text}}
             <input
               type="range"
               min="1"
@@ -29,7 +29,6 @@
           </form>
           <p>{{technology}}</p>
           <button @click="submitLevels">sprawdz level</button>
-          <h1>{{technology}}</h1>
           <router-link to="/quiz">
             <button class="btn btn-primary">go to questiosn</button>
           </router-link>
@@ -44,9 +43,60 @@ export default {
   data() {
     return {
       technology: {
-        software: { name: "sa", level: 1, ischecked: false },
-        javascript: { name: "js", level: 1, ischecked: false },
-        sql: { name: "sql", level: 1, ischecked: false }
+        software: {
+          text: "Software Architecture",
+          name: "sa",
+          level: 1,
+          ischecked: false
+        },
+        net: {
+          text: ".NET",
+          name: "ner",
+          level: 1,
+          ischecked: false
+        },
+        java: {
+          text: "Java",
+          name: "ja",
+          level: 1,
+          ischecked: false
+        },
+        sql: {
+          text: "SQL",
+          name: "sql",
+          level: 1,
+          ischecked: false
+        },
+        git: {
+          text: "GIT",
+          name: "git",
+          level: 1,
+          ischecked: false
+        },
+        javascript: {
+          text: "Javascript",
+          name: "js",
+          level: 1,
+          ischecked: false
+        },
+        angular: {
+          text: "Angular",
+          name: "an",
+          level: 1,
+          ischecked: false
+        },
+        react: {
+          text: "React",
+          name: "re",
+          level: 1,
+          ischecked: false
+        },
+        CSS: {
+          text: "CSS",
+          name: "css",
+          level: 1,
+          ischecked: false
+        }
       }
     };
   },
