@@ -1,9 +1,10 @@
 <template>
   <div class="container">
-    <div class="row">
-      <div class="col-6">
+    <div class="row p-5">
+      <div class="col-6 px-5 explainer-side">
         <img src="..\..\assets\logo.png" alt />
         <h2 class>Skill self-evaluation</h2>
+        <hr />
         <p
           class
         >Here you can choose which categories of questions you want to see on your test. You will see only questions up to the level you have chosen, never higher.</p>
@@ -11,9 +12,10 @@
           class
         >The highe level you chose, the more questions you will have to answer, but also the more time you will get to finish your test.</p>
         <h2 class>Remember</h2>
-        <p class>Once you click SUBMIT button, you will not be anle to change your answer.</p>
+        <hr />
+        <p class>Once you click SUBMIT button, you will not be able to change your answer.</p>
       </div>
-      <div class="col-6">
+      <div class="col-6 px-5 test-side">
         <div class="test">
           <form action v-for="(value, name, index) in technology" :key="name">
             <input type="checkbox" @input="toggleDisabled($event)" v-model="value.ischecked" />
@@ -25,12 +27,12 @@
               v-model="value.level"
               disabled
             />
-            <p>J R S</p>
+            <p>Junior Regular Senior</p>
           </form>
-          <p>{{technology}}</p>
-          <button @click="submitLevels">sprawdz level</button>
+          <!-- <p>{{technology}}</p> -->
+          <!-- <button @click="submitLevels">sprawdz level</button> -->
           <router-link to="/quiz">
-            <button class="btn btn-primary">go to questiosn</button>
+            <button @click="submitLevels" class="btn btn-primary">go to questiosn</button>
           </router-link>
         </div>
       </div>
@@ -109,7 +111,7 @@ export default {
       }
     },
     submitLevels() {
-      //function changes value of level to 0 if technology is not checked. This work just before submiting the summary of form.
+      //function changes value of level to 0 if technology is not checked. This works just before submiting the summary of form.
       const tech = this.technology;
       for (const [key, value] of Object.entries(tech)) {
         if (value.ischecked === false) {
@@ -170,5 +172,12 @@ export default {
 }
 img {
   width: 20vw;
+}
+div.test-side {
+  column-count: 2;
+}
+
+input {
+  display: block;
 }
 </style> 
