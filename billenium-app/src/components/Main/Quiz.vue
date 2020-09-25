@@ -14,42 +14,22 @@
     <br />
     <form action>
       <br />
-      <input
-        type="radio"
-        v-model="actualAnswer"
-        :id="questions[questionNo-1].answer1"
-        :value="questions[questionNo-1].answer1"
-      />
-      <label :for="questions[questionNo-1].answer1">{{questions[questionNo-1].answer1}}</label>
+      <input type="radio" v-model="actualAnswer" :id="questions[questionNo-1].a" value="a" />
+      <label :for="questions[questionNo-1].a">{{questions[questionNo-1].a}}</label>
       <br />
-      <input
-        type="radio"
-        v-model="actualAnswer"
-        :id="questions[questionNo-1].answer2"
-        :value="questions[questionNo-1].answer2"
-      />
-      <label :for="questions[questionNo-1].answer2">{{questions[questionNo-1].answer2}}</label>
+      <input type="radio" v-model="actualAnswer" :id="questions[questionNo-1].b" value="b" />
+      <label :for="questions[questionNo-1].b">{{questions[questionNo-1].b}}</label>
       <br />
-      <input
-        type="radio"
-        v-model="actualAnswer"
-        :id="questions[questionNo-1].answer3"
-        :value="questions[questionNo-1].answer3"
-      />
-      <label :for="questions[questionNo-1].answer2">{{questions[questionNo-1].answer3}}</label>
+      <input type="radio" v-model="actualAnswer" :id="questions[questionNo-1].c" value="c" />
+      <label :for="questions[questionNo-1].c">{{questions[questionNo-1].c}}</label>
       <br />
-      <input
-        type="radio"
-        v-model="actualAnswer"
-        :id="questions[questionNo-1].answer4"
-        :value="questions[questionNo-1].answer4"
-      />
-      <label :for="questions[questionNo-1].answer2">{{questions[questionNo-1].answer4}}</label>
+      <input type="radio" v-model="actualAnswer" :id="questions[questionNo-1].d" value="d" />
+      <label :for="questions[questionNo-1].d">{{questions[questionNo-1].d}}</label>
 
       <br />
     </form>
-    <h3>wszystkie{{answers}}</h3>
-    <h3>obecna{{actualAnswer}}</h3>
+    <!-- <h3>wszystkie: {{answers}}</h3>
+    <h3>obecna: {{actualAnswer}}</h3>-->
 
     <div class="row footer-line">
       <div class="col-3">
@@ -59,12 +39,17 @@
         <h3>Time left: 00:00:00</h3>
       </div>
       <div class="col-2">
-        <button class="btn btn-primary" @click="submitAnswer">submit</button>
+        <button
+          class="btn btn-primary"
+          @click="submitAnswer"
+          v-show="questionNo!==questions.length"
+          :disabled="actualAnswer===''"
+        >submit</button>
+        <router-link to="/results">
+          <button class="btn btn-primary" v-show="questionNo==questions.length">go to results</button>
+        </router-link>
       </div>
     </div>
-    <!-- <router-link to="/results">
-      <button class="btn btn-primary">go to results</button>
-    </router-link>-->
   </div>
 </template>
 
@@ -73,108 +58,107 @@ export default {
   data() {
     return {
       questionNo: "1",
-      sumOfQuestions: "100",
-      // questionsArr: [""],
-      answers: [""],
+      answers: [],
       actualAnswer: "",
+      //to do: get questions from the server
       questions: [
         {
           technology: "Javascript",
           level: 1,
           text: "What is JS",
-          answer1: "this",
-          answer2: "that",
-          answer3: "sure",
-          answer4: "none",
-          correct: 1
+          a: "this",
+          b: "that",
+          c: "sure",
+          d: "none",
+          correct: "a"
         },
         {
           technology: "GIT",
           level: 1,
 
           text: "What is GIT",
-          answer1: "I know",
-          answer2: "he knows",
-          answer3: "noone knows",
-          answer4: "who cares",
-          correct: 1
+          a: "I know",
+          b: "he knows",
+          c: "noone knows",
+          d: "who cares",
+          correct: "a"
         },
         {
           technology: "SQL",
           level: 1,
 
           text: "What is SQL",
-          answer1: "null",
-          answer2: "blank",
-          answer3: "0",
-          answer4: "NaN",
-          correct: 1
+          a: "null",
+          b: "blank",
+          c: "0",
+          d: "NaN",
+          correct: "a"
         },
         {
           technology: "Javascript",
           level: 1,
 
           text: "What is JS",
-          answer1: "this",
-          answer2: "that",
-          answer3: "sure",
-          answer4: "none",
-          correct: 1
+          a: "this",
+          b: "that",
+          c: "sure",
+          d: "none",
+          correct: "a"
         },
         {
           technology: "GIT",
           level: 1,
 
           text: "What is GIT",
-          answer1: "I know",
-          answer2: "he knows",
-          answer3: "noone knows",
-          answer4: "who cares",
-          correct: 1
+          a: "I know",
+          b: "he knows",
+          c: "noone knows",
+          d: "who cares",
+          correct: "a"
         },
         {
           technology: "SQL",
           level: 1,
 
           text: "What is SQL",
-          answer1: "null",
-          answer2: "blank",
-          answer3: "0",
-          answer4: "NaN",
-          correct: 2
+          a: "null",
+          b: "blank",
+          c: "0",
+          d: "NaN",
+          correct: "b"
         },
         {
           technology: "Javascript",
           level: 1,
 
           text: "What is JS",
-          answer1: "this",
-          answer2: "that",
-          answer3: "sure",
-          answer4: "none",
-          correct: 1
+          a: "this",
+          b: "that",
+          c: "sure",
+          d: "none",
+          correct: "a"
         },
         {
           technology: "GIT",
           level: 1,
 
           text: "What is GIT",
-          answer1: "I know",
-          answer2: "he knows",
-          answer3: "noone knows",
-          answer4: "who cares",
-          correct: 3
+          a: "I know",
+          b: "he knows",
+          c: "noone knows",
+          d: "who cares",
+          correct: "c"
         },
         {
           technology: "SQL",
           level: 1,
 
           text: "What is SQL",
-          answer1: "null",
-          answer2: "blank",
-          answer3: "0",
-          answer4: "NaN",
-          correct: 2
+          a: "null",
+          b: "blank",
+          c: "0",
+          d: "NaN",
+          correct: "d"
         }
       ]
     };
@@ -183,6 +167,10 @@ export default {
     submitAnswer() {
       this.questionNo++;
       this.answers.push(this.actualAnswer);
+      const allInputs = document.querySelectorAll("input");
+      //unchecks radios after sumitting
+      allInputs.forEach(el => (el.checked = false));
+      this.actualAnswer = "";
     }
   }
 };
