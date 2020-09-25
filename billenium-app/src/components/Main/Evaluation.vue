@@ -31,8 +31,14 @@
           </form>
           <!-- <p>{{technology}}</p> -->
           <!-- <button @click="submitLevels">sprawdz level</button> -->
+
+          <!-- to do: enable button if at leat one button is checked -->
           <router-link to="/quiz">
-            <button @click="submitLevels" class="btn btn-primary">go to questiosn</button>
+            <button
+              @click="submitLevels"
+              class="btn btn-primary"
+              :disabled="startTest"
+            >go to questiosn</button>
           </router-link>
         </div>
       </div>
@@ -44,6 +50,7 @@
 export default {
   data() {
     return {
+      startTest: true,
       technology: {
         software: {
           text: "Software Architecture",
@@ -102,6 +109,7 @@ export default {
       }
     };
   },
+
   methods: {
     toggleDisabled($event) {
       if ($event.target.checked) {

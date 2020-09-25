@@ -5,8 +5,10 @@
         <h2>Question {{questionNo}} / {{questions.length}}</h2>
       </div>
 
-      <div class="col-2">
+      <div class="col-2 text-right">
         <span>{{ questions[questionNo-1].technology}}</span>
+        <hr />
+        <span>level: {{questions[questionNo-1].level}}</span>
       </div>
     </div>
     <hr />
@@ -75,7 +77,6 @@ export default {
         {
           technology: "GIT",
           level: 1,
-
           text: "What is GIT",
           a: "I know",
           b: "he knows",
@@ -86,7 +87,6 @@ export default {
         {
           technology: "SQL",
           level: 1,
-
           text: "What is SQL",
           a: "null",
           b: "blank",
@@ -97,7 +97,6 @@ export default {
         {
           technology: "Javascript",
           level: 1,
-
           text: "What is JS",
           a: "this",
           b: "that",
@@ -108,7 +107,6 @@ export default {
         {
           technology: "GIT",
           level: 1,
-
           text: "What is GIT",
           a: "I know",
           b: "he knows",
@@ -119,7 +117,6 @@ export default {
         {
           technology: "SQL",
           level: 1,
-
           text: "What is SQL",
           a: "null",
           b: "blank",
@@ -130,7 +127,6 @@ export default {
         {
           technology: "Javascript",
           level: 1,
-
           text: "What is JS",
           a: "this",
           b: "that",
@@ -141,7 +137,6 @@ export default {
         {
           technology: "GIT",
           level: 1,
-
           text: "What is GIT",
           a: "I know",
           b: "he knows",
@@ -152,7 +147,6 @@ export default {
         {
           technology: "SQL",
           level: 1,
-
           text: "What is SQL",
           a: "null",
           b: "blank",
