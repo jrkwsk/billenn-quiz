@@ -38,7 +38,7 @@
               @click="submitLevels"
               class="btn btn-primary"
               :disabled="startTest"
-            >go to questiosn</button>
+            >go to questions</button>
           </router-link>
         </div>
       </div>
